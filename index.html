@@ -40,107 +40,115 @@
         <h1>The Sith Order</h1>
       </div>
       <nav class="site-nav" aria-label="Primary">
-        <a href="#overview">Overview</a>
-        <a href="#divisions">Divisions</a>
-        <a href="#directory">Directory</a>
-        <a href="#links">Links</a>
+        <button class="nav-tab active" data-view="overview">Overview</button>
+        <button class="nav-tab" data-view="divisions">Divisions</button>
+        <button class="nav-tab" data-view="directory">Directory</button>
+        <button class="nav-tab" data-view="links">Links</button>
       </nav>
     </header>
 
-    <main>
-      <section class="hero hero-single" id="overview">
-        <div class="hero-copy card">
-          <div class="hero-emblems" aria-hidden="true">
-            <div class="crest-mark crest-image-mark"></div>
+    <main class="view-stage">
+      <section class="portal-view active-view" id="overview" data-view="overview">
+        <div class="hero hero-single">
+          <div class="hero-copy card">
+            <div class="hero-emblems" aria-hidden="true">
+              <div class="crest-mark crest-image-mark"></div>
+            </div>
+            <p class="eyebrow">Holocron Interface</p>
+            <h2>The Sith Order Portal</h2>
+            <p>
+              The Sith Order is a disciplined and immersive Roblox group built to
+              reflect strength, hierarchy, knowledge, and control. This portal
+              serves as its public-facing command interface: a place where
+              visitors, recruits, and members can study the divisions of the
+              Order, locate official resources, and understand its structure.
+            </p>
+            <p>
+              <strong>The Sith Order is an ancient order of Force-wielders devoted
+              to the dark side of the Force. It is focused on Sith-themed
+              gameplay, with ranks, training sessions, leadership structures, and
+              organized events shaped by discipline and teamwork.</strong>
+            </p>
+            <div class="hero-actions">
+              <button class="primary-button nav-jump" data-view="divisions">View Divisions</button>
+              <button class="secondary-button nav-jump" data-view="links">Open Links</button>
+            </div>
           </div>
-          <p class="eyebrow">Holocron Interface</p>
-          <h2>The Sith Order Portal</h2>
-          <p>
-            The Sith Order is a disciplined and immersive Roblox group built to
-            reflect strength, hierarchy, knowledge, and control. This portal
-            serves as its public-facing command interface: a place where
-            visitors, recruits, and members can study the divisions of the
-            Order, locate official resources, and understand its structure.
-          </p>
-          <p>
-            <strong>The Sith Order is an ancient order of Force-wielders devoted
-            to the dark side of the Force. It is focused on Sith-themed
-            gameplay, with ranks, training sessions, leadership structures, and
-            organized events shaped by discipline and teamwork.</strong>
-          </p>
-          <div class="hero-actions">
-            <a class="primary-button" href="#divisions">View Divisions</a>
-            <a class="secondary-button" href="#links">Open Links</a>
+        </div>
+      </section>
+
+      <section class="portal-view" id="divisions" data-view="divisions">
+        <div class="section-block view-block">
+          <div class="section-heading">
+            <p class="eyebrow">Core Structure</p>
+            <h2>Divisions of The Order</h2>
+            <p>
+              Select a division to reveal its purpose and focus within the wider
+              Order.
+            </p>
+          </div>
+
+          <div class="division-layout">
+            <div class="division-list" id="divisionList"></div>
+            <article class="division-detail card" id="divisionDetail">
+              <p class="eyebrow">Division Record</p>
+              <h3>Select a division</h3>
+              <p>
+                Choose one of the divisions to display its description, duties,
+                and thematic role within The Sith Order.
+              </p>
+            </article>
           </div>
         </div>
       </section>
 
-      <section class="section-block" id="divisions">
-        <div class="section-heading">
-          <p class="eyebrow">Core Structure</p>
-          <h2>Divisions of The Order</h2>
-          <p>
-            Select a division to reveal its purpose and focus within the wider
-            Order.
-          </p>
-        </div>
+      <section class="portal-view" id="directory" data-view="directory">
+        <div class="section-block view-block">
+          <div class="section-heading">
+            <p class="eyebrow">Public Information Board</p>
+            <h2>Command Directory</h2>
+          </div>
 
-        <div class="division-layout">
-          <div class="division-list" id="divisionList"></div>
-          <article class="division-detail card" id="divisionDetail">
-            <p class="eyebrow">Division Record</p>
-            <h3>Select a division</h3>
-            <p>
-              Choose one of the divisions to display its description, duties,
-              and thematic role within The Sith Order.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section-block" id="directory">
-        <div class="section-heading">
-          <p class="eyebrow">Public Information Board</p>
-          <h2>Command Directory</h2>
-        </div>
-
-        <div class="directory-grid directory-grid-three">
-          <article class="card info-card">
-            <h3>Welcome Board</h3>
-            <p>
-              Welcome to The Sith Order. This portal exists to make key
-              information easy to find and easier to understand.
-            </p>
-          </article>
-          <article class="card info-card">
-            <h3>Recruitment</h3>
-            <p>
-              To join The Sith Order, you must first request membership through
-              the main Roblox group:
-              <a href="https://www.roblox.com/communities/12345194/he-Sith-rd-r#!/about" target="_blank" rel="noreferrer noopener">The Sith Order Roblox Group</a>.
-              You must also be in our Discord server:
-              <a href="https://discord.gg/EYxKKphv7y" target="_blank" rel="noreferrer noopener">Join Discord</a>.
-              Once you’ve applied, a Darth+ ranked member will review your
-              request and accept you.
-            </p>
-          </article>
-          <article class="card info-card">
-            <h3>Operations</h3>
-            <p>
-              All event notices, operation updates, and group activity
-              announcements are posted within our Discord server.
-            </p>
-          </article>
+          <div class="directory-grid directory-grid-three">
+            <article class="card info-card">
+              <h3>Welcome Board</h3>
+              <p>
+                Welcome to The Sith Order. This portal exists to make key
+                information easy to find and easier to understand.
+              </p>
+            </article>
+            <article class="card info-card">
+              <h3>Recruitment</h3>
+              <p>
+                To join The Sith Order, you must first request membership through
+                the main Roblox group:
+                <a href="https://www.roblox.com/communities/12345194/he-Sith-rd-r#!/about" target="_blank" rel="noreferrer noopener">The Sith Order Roblox Group</a>.
+                You must also be in our Discord server:
+                <a href="https://discord.gg/EYxKKphv7y" target="_blank" rel="noreferrer noopener">Join Discord</a>.
+                Once you’ve applied, a Darth+ ranked member will review your
+                request and accept you.
+              </p>
+            </article>
+            <article class="card info-card">
+              <h3>Operations</h3>
+              <p>
+                All event notices, operation updates, and group activity
+                announcements are posted within our Discord server.
+              </p>
+            </article>
+          </div>
         </div>
       </section>
 
-      <section class="section-block" id="links">
-        <div class="section-heading">
-          <p class="eyebrow">External Gateways</p>
-          <h2>Links & Access Points</h2>
-        </div>
+      <section class="portal-view" id="links" data-view="links">
+        <div class="section-block view-block">
+          <div class="section-heading">
+            <p class="eyebrow">External Gateways</p>
+            <h2>Links & Access Points</h2>
+          </div>
 
-        <div class="link-grid" id="linkGrid"></div>
+          <div class="link-grid" id="linkGrid"></div>
+        </div>
       </section>
     </main>
 
