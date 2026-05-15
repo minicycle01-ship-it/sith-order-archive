@@ -5,6 +5,9 @@ const divisionDetail = document.getElementById('divisionDetail');
 const linkGrid = document.getElementById('linkGrid');
 const welcomeModal = document.getElementById('welcomeModal');
 const enterSiteButton = document.getElementById('enterSiteButton');
+const navTabs = document.querySelectorAll('.nav-tab');
+const navJumps = document.querySelectorAll('.nav-jump');
+const portalViews = document.querySelectorAll('.portal-view');
 
 function renderDivisionDetail(division) {
   divisionDetail.innerHTML = `
@@ -100,6 +103,49 @@ function renderLinks() {
   });
 }
 
+function setActiveNav(viewName) {
+  navTabs.forEach((tab) => {
+    tab.classList.toggle('active', tab.dataset.view === viewName);
+  });
+}
+
+function showView(viewName, updateHash = true) {
+  portalViews.forEach((view) => {
+    const isActive = view.dataset.view === viewName;
+    view.classList.toggle('active-view', isActive);
+  });
+
+  setActiveNav(viewName);
+
+  if (updateHash) {
+    window.location.hash = viewName;
+  }
+}
+
+function handleViewChange(viewName) {
+  if (!viewName) return;
+  showView(viewName);
+}
+
+navTabs.forEach((tab) => {
+  tab.addEventListener('click', () => {
+    handleViewChange(tab.dataset.view);
+  });
+});
+
+navJumps.forEach((button) => {
+  button.addEventListener('click', () => {
+    handleViewChange(button.dataset.view);
+  });
+});
+
+window.addEventListener('hashchange', () => {
+  const hashView = window.location.hash.replace('#', '');
+  if (hashView) {
+    showView(hashView, false);
+  }
+});
+
 function dismissWelcome() {
   welcomeModal.classList.add('hidden');
   welcomeModal.setAttribute('aria-hidden', 'true');
@@ -118,3 +164,6 @@ if (welcomeModal) {
 
 renderDivisions();
 renderLinks();
+
+const initialView = window.location.hash.replace('#', '') || 'overview';
+showView(initialView, false);
