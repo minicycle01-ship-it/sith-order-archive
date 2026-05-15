@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Sith Order Archive</title>
+    <meta
+      name="description"
+      content="The Sith Order Archive — a holocron-inspired command site for divisions, notices, links, and public group information."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="background-grid"></div>
+    <div class="background-glow glow-left"></div>
+    <div class="background-glow glow-right"></div>
+
+    <div class="welcome-modal" id="welcomeModal" aria-hidden="false">
+      <div class="welcome-panel">
+        <p class="eyebrow">Transmitting From The Archive</p>
+        <h2>Welcome to The Sith Order</h2>
+        <p>
+          The Sith Order is a structured Roblox group built around discipline,
+          doctrine, authority, and advancement. This public archive exists to
+          present the Order’s divisions, command identity, and official access
+          points in a serious, immersive format.
+        </p>
+        <button id="enterSiteButton" class="primary-button">Enter Archive</button>
+      </div>
+    </div>
+
+    <header class="site-header">
+      <div>
+        <p class="eyebrow">Worldwide Public Archive</p>
+        <h1>The Sith Order</h1>
+      </div>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#overview">Overview</a>
+        <a href="#divisions">Divisions</a>
+        <a href="#directory">Directory</a>
+        <a href="#links">Links</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="overview">
+        <div class="hero-copy card">
+          <div class="hero-emblems" aria-hidden="true">
+            <span class="emblem-circle"></span>
+            <span class="emblem-diamond"></span>
+            <span class="emblem-circle emblem-circle-small"></span>
+          </div>
+          <p class="eyebrow">Holocron Interface</p>
+          <h2>The Sith Order Archive</h2>
+          <p>
+            The Sith Order is a disciplined and immersive Roblox group built to
+            reflect strength, hierarchy, knowledge, and control. This archive
+            serves as its public-facing command interface: a place where
+            visitors, recruits, and members can study the divisions of the
+            Order, locate official resources, and understand its structure.
+          </p>
+          <p>
+            Working description: <strong>The Sith Order is an ancient order of
+            Force-wielders devoted to the dark side of the Force. It is focused
+            on Sith-themed gameplay, with ranks, training sessions, leadership
+            structures, and organized events shaped by discipline and
+            teamwork.</strong>
+          </p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#divisions">View Divisions</a>
+            <a class="secondary-button" href="#links">Open Links</a>
+          </div>
+        </div>
+
+        <div class="hero-status card">
+          <h3>Archive Status</h3>
+          <ul class="status-list">
+            <li><span>Visibility</span><strong>Public</strong></li>
+            <li><span>Audience</span><strong>Worldwide</strong></li>
+            <li><span>Theme</span><strong>Sith Holocron</strong></li>
+            <li><span>Mode</span><strong>Command Archive</strong></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section-block" id="divisions">
+        <div class="section-heading">
+          <p class="eyebrow">Core Structure</p>
+          <h2>Divisions of The Order</h2>
+          <p>
+            Select a division to reveal its purpose and focus within the wider
+            Order.
+          </p>
+        </div>
+
+        <div class="division-layout">
+          <div class="division-list" id="divisionList"></div>
+          <article class="division-detail card" id="divisionDetail">
+            <p class="eyebrow">Division Record</p>
+            <h3>Select a division</h3>
+            <p>
+              Choose one of the divisions to display its description, duties,
+              and thematic role within The Sith Order.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block" id="directory">
+        <div class="section-heading">
+          <p class="eyebrow">Public Information Board</p>
+          <h2>Command Directory</h2>
+          <p>
+            Use this space for announcements, onboarding notes, rank guides,
+            event schedules, or any public-facing information you want members
+            and visitors to find quickly.
+          </p>
+        </div>
+
+        <div class="directory-grid">
+          <article class="card info-card">
+            <h3>Welcome Board</h3>
+            <p>
+              Welcome to The Sith Order. This archive exists to make key
+              information easy to find and easier to understand.
+            </p>
+          </article>
+          <article class="card info-card">
+            <h3>Recruitment</h3>
+            <p>
+              Add your recruitment process, expectations, and any entry
+              requirements here.
+            </p>
+          </article>
+          <article class="card info-card">
+            <h3>Operations</h3>
+            <p>
+              Publish event schedules, deployment notices, or weekly
+              objectives.
+            </p>
+          </article>
+          <article class="card info-card">
+            <h3>Records</h3>
+            <p>
+              Store ranks, notable achievements, public documents, or other
+              structured data in an accessible format.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block" id="links">
+        <div class="section-heading">
+          <p class="eyebrow">External Gateways</p>
+          <h2>Links & Access Points</h2>
+          <p>
+            Use this section to direct visitors toward the Order’s official
+            documents, command references, communication spaces, and linked
+            territories.
+          </p>
+        </div>
+
+        <div class="link-grid" id="linkGrid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>The Sith Order Archive · Public Information Interface</p>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
