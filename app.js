@@ -54,8 +54,12 @@ function renderDivisions() {
 }
 
 function getLinkCategory(title) {
-  if (['The Sith Code', 'The Sith Edict', 'Sith High Command', 'Kaggath Regulations'].includes(title)) {
+  if (['The Sith Code', 'The Sith Edict', 'Sith High Command', 'Kaggath Regulations', 'Assassination Regulations'].includes(title)) {
     return 'Documents';
+  }
+
+  if (['Rank Progression Registry', 'Assassination Board'].includes(title)) {
+    return 'Registries';
   }
 
   if (['Ashas Ree', 'Malachor'].includes(title)) {
