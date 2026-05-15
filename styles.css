@@ -108,23 +108,26 @@ main,
   gap: 0.8rem;
 }
 
-.site-nav a,
+.nav-tab,
 .secondary-button,
 .primary-button {
   text-decoration: none;
-  transition: 180ms ease;
+  transition: 220ms ease;
 }
 
-.site-nav a {
+.nav-tab {
   color: var(--muted);
   padding: 0.75rem 1rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.03);
+  font: inherit;
+  cursor: pointer;
 }
 
-.site-nav a:hover,
-.site-nav a:focus-visible {
+.nav-tab:hover,
+.nav-tab:focus-visible,
+.nav-tab.active {
   color: var(--text);
   border-color: var(--border);
   box-shadow: 0 0 18px rgba(210, 38, 83, 0.18);
@@ -134,6 +137,36 @@ main {
   max-width: 1180px;
   margin: 0 auto;
   padding: 1rem 1.25rem 4rem;
+}
+
+.view-stage {
+  position: relative;
+  min-height: 860px;
+}
+
+.portal-view {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateX(70px) scale(0.98);
+  pointer-events: none;
+  filter: blur(10px);
+  transition:
+    opacity 520ms ease,
+    transform 650ms cubic-bezier(0.19, 1, 0.22, 1),
+    filter 520ms ease;
+}
+
+.portal-view.active-view {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  pointer-events: auto;
+  filter: blur(0);
+  z-index: 2;
+}
+
+.view-block {
+  margin-top: 0;
 }
 
 .hero {
@@ -169,50 +202,29 @@ main {
 }
 
 .crest-mark {
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center, rgba(255, 220, 228, 0.9) 0 16%, rgba(196, 30, 66, 0.92) 17% 42%, rgba(85, 10, 28, 0.96) 43% 72%, rgba(18, 5, 10, 0.98) 73% 100%);
+  box-shadow: 0 0 24px rgba(210, 38, 83, 0.35), 0 0 40px rgba(143, 79, 255, 0.14);
   position: relative;
-  width: 118px;
-  height: 118px;
-  border-radius: 50%;
-  background: radial-gradient(circle at center, rgba(255, 244, 246, 0.98) 0 18%, rgba(178, 25, 54, 0.96) 19% 36%, rgba(87, 9, 25, 0.95) 37% 60%, rgba(18, 5, 10, 0.98) 61% 100%);
-  box-shadow: 0 0 22px rgba(210, 38, 83, 0.35), 0 0 48px rgba(143, 79, 255, 0.16);
-  overflow: visible;
 }
 
-.crest-core,
-.crest-ring,
-.crest-spike {
+.crest-mark::before,
+.crest-mark::after {
+  content: '';
   position: absolute;
-}
-
-.crest-core {
-  inset: 35px;
+  inset: 24px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,0.95) 0 55%, rgba(123, 10, 32, 0.95) 56% 100%);
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.28);
+  border: 8px solid rgba(255, 235, 241, 0.92);
 }
 
-.crest-ring {
-  inset: 19px;
-  border-radius: 50%;
-  border: 10px solid rgba(245, 240, 245, 0.92);
-  clip-path: polygon(0 0, 100% 0, 100% 58%, 58% 58%, 58% 100%, 0 100%);
-  opacity: 0.95;
+.crest-mark::after {
+  inset: 40px;
+  border-width: 6px;
+  border-color: rgba(255, 255, 255, 0.92);
 }
-
-.crest-spike {
-  width: 26px;
-  height: 48px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(210,210,210,0.82));
-  clip-path: polygon(50% 0, 100% 100%, 0 100%);
-  left: 46px;
-  top: -10px;
-  transform-origin: 50% 68px;
-}
-
-.crest-spike-1 { transform: rotate(-52deg); }
-.crest-spike-2 { transform: rotate(-16deg); }
-.crest-spike-3 { transform: rotate(20deg); }
-.crest-spike-4 { transform: rotate(56deg); }
 
 .hero-copy h2 {
   margin: 0 0 0.8rem;
@@ -268,6 +280,7 @@ main {
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(255, 255, 255, 0.02);
   color: var(--text);
+  cursor: pointer;
 }
 
 .secondary-button:hover,
@@ -487,7 +500,7 @@ main {
 }
 
 @media (max-width: 920px) {
-  .hero,
+  .site-header,
   .division-layout,
   .directory-grid,
   .directory-grid-three,
@@ -503,22 +516,10 @@ main {
   .division-meta {
     grid-template-columns: 1fr;
   }
-}
 
-@keyframes pulseGlow {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 1;
+  .view-stage {
+    min-height: 1180px;
   }
-  50% {
-    transform: scale(1.05);
-    opacity: 0.82;
-  }
-}
-
-.crest-mark {
-  animation: pulseGlow 4.2s ease-in-out infinite;
 }
 
 @media (max-width: 640px) {
@@ -540,8 +541,12 @@ main {
     width: 100%;
   }
 
-  .site-nav a {
+  .nav-tab {
     flex: 1 1 auto;
     text-align: center;
+  }
+
+  .view-stage {
+    min-height: 1320px;
   }
 }
