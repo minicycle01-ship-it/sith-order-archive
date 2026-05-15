@@ -68,6 +68,21 @@ window.SITH_ORDER_DATA = {
       href: 'https://docs.google.com/document/d/1H-Q3JWjgIwiJ5s6eTYYZrViBOIbo_NkLH0FEGLISARs/edit?tab=t.0'
     },
     {
+      title: 'Rank Progression Registry',
+      description: 'Track progression and rank development within the Order.',
+      href: 'https://docs.google.com/spreadsheets/d/1gBYti4lZ28jnAKjnyXuH9Pw_FowA9zLwcSZe03GFL5w/edit?usp=sharing'
+    },
+    {
+      title: 'Assassination Regulations',
+      description: 'Any information regarding assassinations will be found here. This document outlines the regulations governing them.',
+      href: 'https://docs.google.com/document/d/1HOiq5PCVOjFrFsKIRGdteO_tFO0OhdHWTDVhsKpApmo/edit?usp=sharing'
+    },
+    {
+      title: 'Assassination Board',
+      description: 'The Sith Order assassination board. The board resets on the first of every month. Targets get cleared once marked after two days of their original time becoming marked.',
+      href: 'https://docs.google.com/spreadsheets/d/1yAex-PT2zCq9i75AV92N0Z9AtLOHStUd3iC9lIld_Nc/edit?usp=sharing'
+    },
+    {
       title: 'Ashas Ree',
       description: 'Sith territory.',
       href: 'https://www.roblox.com/games/16012495353/The-Sith-Temple-on-Ashas-Ree'
