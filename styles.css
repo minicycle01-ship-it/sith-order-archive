@@ -550,3 +550,10 @@ main {
     min-height: 1320px;
   }
 }
+/* Disable Sith emblem */
+.hero-emblems,
+.crest-mark,
+.crest-mark::before,
+.crest-mark::after {
+    display: none !important;
+}
