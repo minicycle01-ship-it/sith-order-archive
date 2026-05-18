@@ -11,5 +11,6 @@ window.SITH_ORDER_DATA = {
     {
       name: 'The Sith Doctrine',
       summary: 'Trains rising members and safeguards the teachings of the Order.',
-      
+      purpose:
+        'The Sith Doctrine is tasked with the training of the Sith Hopefuls, Sith Acolytes, and aiding Apprentices with giving the basic knowledge that they need throughout their career in the Order. They also manage the Archive
 ...(truncated)...
