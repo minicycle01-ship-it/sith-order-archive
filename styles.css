@@ -139,30 +139,28 @@ main {
   padding: 1rem 1.25rem 4rem;
 }
 
+/* --- Tab stage: active tab flows in document order; inactive tabs are hidden --- */
+
 .view-stage {
   position: relative;
-  min-height: 860px;
 }
 
 .portal-view {
-  position: absolute;
-  inset: 0;
+  display: none;
   opacity: 0;
-  transform: translateX(70px) scale(0.98);
-  pointer-events: none;
-  filter: blur(10px);
+  transform: translateX(40px) scale(0.99);
+  filter: blur(6px);
   transition:
-    opacity 520ms ease,
-    transform 650ms cubic-bezier(0.19, 1, 0.22, 1),
-    filter 520ms ease;
+    opacity 420ms ease,
+    transform 520ms cubic-bezier(0.19, 1, 0.22, 1),
+    filter 420ms ease;
 }
 
 .portal-view.active-view {
+  display: block;
   opacity: 1;
   transform: translateX(0) scale(1);
-  pointer-events: auto;
   filter: blur(0);
-  z-index: 2;
 }
 
 .view-block {
@@ -423,137 +421,5 @@ main {
   display: block;
   padding: 1.35rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  background: linear-gradient(180deg, rgba(24, 10, 30, 0.88), rgba(10, 7, 18, 0.94));
-  color: var(--text);
-  text-decoration: none;
-}
-
-.link-card:hover,
-.link-card:focus-visible {
-  border-color: var(--border);
-  box-shadow: 0 0 24px rgba(210, 38, 83, 0.16);
-  transform: translateY(-1px);
-}
-
-.link-card h3 {
-  margin-top: 0.15rem;
-  font-family: 'Cinzel', serif;
-  text-decoration: none;
-}
-
-.link-card p {
-  text-decoration: none;
-}
-
-.link-category {
-  margin: 0 0 0.35rem;
-  color: var(--purple-soft);
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 0.72rem;
-  font-weight: 700;
-}
-
-.site-footer {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 0 1.25rem 2rem;
-  color: #9f91b4;
-}
-
-.welcome-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-  display: grid;
-  place-items: center;
-  background: rgba(3, 1, 8, 0.82);
-  backdrop-filter: blur(10px);
-  transition: opacity 220ms ease, visibility 220ms ease;
-}
-
-.welcome-modal.hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.welcome-panel {
-  width: min(92vw, 620px);
-  padding: 2rem;
-  border-radius: 24px;
-  border: 1px solid var(--border-strong);
-  background: linear-gradient(180deg, rgba(25, 9, 34, 0.95), rgba(9, 6, 15, 0.98));
-  box-shadow: 0 0 32px rgba(143, 79, 255, 0.18), 0 0 90px rgba(210, 38, 83, 0.14);
-  text-align: center;
-}
-
-.welcome-panel h2 {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin: 0.3rem 0 0.8rem;
-}
-
-.welcome-panel p {
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-@media (max-width: 920px) {
-  .site-header,
-  .division-layout,
-  .directory-grid,
-  .directory-grid-three,
-  .link-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .site-header {
-    align-items: start;
-    flex-direction: column;
-  }
-
-  .division-meta {
-    grid-template-columns: 1fr;
-  }
-
-  .view-stage {
-    min-height: 1180px;
-  }
-}
-
-@media (max-width: 640px) {
-  main,
-  .site-header,
-  .site-footer {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .hero-copy,
-  .division-detail,
-  .info-card,
-  .welcome-panel {
-    padding: 1.2rem;
-  }
-
-  .site-nav {
-    width: 100%;
-  }
-
-  .nav-tab {
-    flex: 1 1 auto;
-    text-align: center;
-  }
-
-  .view-stage {
-    min-height: 1320px;
-  }
-}
-/* Disable Sith emblem */
-.hero-emblems,
-.crest-mark,
-.crest-mark::before,
-.crest-mark::after {
-    display: none !important;
-}
+  background: linea
+...(truncated)...
