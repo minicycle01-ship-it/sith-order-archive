@@ -9,6 +9,16 @@ const navTabs = document.querySelectorAll('.nav-tab');
 const navJumps = document.querySelectorAll('.nav-jump');
 const portalViews = document.querySelectorAll('.portal-view');
 
+// Display order for the grouped Resources view.
+const LINK_CATEGORY_ORDER = [
+  'Communities',
+  'Information',
+  'Logistics',
+  'Sith Territory',
+  'Jedi Territory',
+  'Battlegrounds'
+];
+
 function renderDivisionDetail(division) {
   divisionDetail.innerHTML = `
     <p class="eyebrow">Division Record</p>
@@ -28,9 +38,10 @@ function renderDivisionDetail(division) {
 }
 
 function renderDivisions() {
+  if (!divisionList) return;
   divisionList.innerHTML = '';
 
-  data.divisions.forEach((division, index) => {
+  (data.divisions || []).forEach((division, index) => {
     const button = document.createElement('button');
     button.className = 'division-button';
     button.type = 'button';
@@ -56,53 +67,57 @@ function renderDivisions() {
   });
 }
 
-function getLinkCategory(title) {
-  if (['The Sith Code', 'The Sith Edict', 'Sith High Command', 'Kaggath Regulations', 'Assassination Regulations'].includes(title)) {
-    return 'Documents';
-  }
-
-  if (['Rank Progression Registry', 'Assassination Board'].includes(title)) {
-    return 'Registries';
-  }
-
-  if (['Ashas Ree', 'Malachor'].includes(title)) {
-    return 'Sith Territory';
-  }
-
-  if (['Naboo'].includes(title)) {
-    return 'Jedi Territory';
-  }
-
-  if (['Toola', 'Shu Torun', 'Panna Prime', 'Balmorra'].includes(title)) {
-    return 'Battlegrounds';
-  }
-
-  if (['Orion Community Discord Server', 'Clothing Couturier'].includes(title)) {
-    return 'Servers';
-  }
-
-  return 'Archive Links';
-}
-
 function renderLinks() {
+  if (!linkGrid) return;
   linkGrid.innerHTML = '';
 
-  data.links.forEach((link) => {
-    const anchor = document.createElement('a');
-    const category = getLinkCategory(link.title);
-    anchor.className = 'link-card';
-    anchor.href = link.href;
-    anchor.target = link.href.startsWith('http') ? '_blank' : '_self';
-    anchor.rel = link.href.startsWith('http') ? 'noreferrer noopener' : '';
-    anchor.innerHTML = `
-      <p class="link-category">${category}</p>
-      <h3>${link.title}</h3>
-      <p>${link.description}</p>
+  // Group links by their declared category, preserving original order within each group.
+  const grouped = new Map();
+  (data.links || []).forEach((link) => {
+    const cat = link.category || 'Other';
+    if (!grouped.has(cat)) grouped.set(cat, []);
+    grouped.get(cat).push(link);
+  });
+
+  // Render in the defined order, with anything else appended after.
+  const orderedCats = [
+    ...LINK_CATEGORY_ORDER.filter((c) => grouped.has(c)),
+    ...[...grouped.keys()].filter((c) => !LINK_CATEGORY_ORDER.includes(c))
+  ];
+
+  orderedCats.forEach((category) => {
+    const section = document.createElement('section');
+    section.className = 'link-section';
+
+    const heading = document.createElement('div');
+    heading.className = 'link-section-heading';
+    heading.innerHTML = `
+      <p class="eyebrow">${category}</p>
+      <span class="link-section-divider" aria-hidden="true"></span>
     `;
-    linkGrid.appendChild(anchor);
+    section.appendChild(heading);
+
+    const grid = document.createElement('div');
+    grid.className = 'link-section-grid';
+
+    grouped.get(category).forEach((link) => {
+      const anchor = document.createElement('a');
+      anchor.className = 'link-card';
+      anchor.href = link.href;
+      anchor.target = link.href.startsWith('http') ? '_blank' : '_self';
+      anchor.rel = link.href.startsWith('http') ? 'noreferrer noopener' : '';
+      anchor.innerHTML = `
+        <p class="link-category">${category}</p>
+        <h3>${link.title}</h3>
+        <p>${link.description}</p>
+      `;
+      grid.appendChild(anchor);
+    });
+
+    section.appendChild(grid);
+    linkGrid.appendChild(section);
   });
 }
-
 function setActiveNav(viewName) {
   navTabs.forEach((tab) => {
     tab.classList.toggle('active', tab.dataset.view === viewName);
@@ -147,6 +162,7 @@ window.addEventListener('hashchange', () => {
 });
 
 function dismissWelcome() {
+  if (!welcomeModal) return;
   welcomeModal.classList.add('hidden');
   welcomeModal.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('modal-open');
@@ -154,7 +170,9 @@ function dismissWelcome() {
 
 if (welcomeModal) {
   document.body.classList.add('modal-open');
-  enterSiteButton.addEventListener('click', dismissWelcome);
+  if (enterSiteButton) {
+    enterSiteButton.addEventListener('click', dismissWelcome);
+  }
   welcomeModal.addEventListener('click', (event) => {
     if (event.target === welcomeModal) {
       dismissWelcome();
